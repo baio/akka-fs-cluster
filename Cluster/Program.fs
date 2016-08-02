@@ -18,13 +18,13 @@ let main argv =
     
     let writer = spawn system "WriterActor" (WriterActor)    
 
-    //let routerOpt = SpawnOption.Router ( Akka.Routing.FromConfig.Instance )
-    //let supervisionOpt = SpawnOption.SupervisorStrategy (Strategy.OneForOne(fun _ -> Directive.Stop))
+    let routerOpt = SpawnOption.Router ( Akka.Routing.FromConfig.Instance )
+    let supervisionOpt = SpawnOption.SupervisorStrategy (Strategy.OneForOne(fun _ -> Directive.Stop))
 
-    let reader = spawn system "ReaderActor" (ReaderActor)
-    //let readerRouter = spawn system "ReaderRouter" (ReaderRouter writer)    
+    //let reader = spawn system "ReaderActor" (ReaderActor)
+    let reader = spawne system "ReaderActor" <@ (ReaderActor) @> [routerOpt; supervisionOpt]
     
-    reader <! ReadMessage
+    //reader <! ReadMessage
     //readerRouter <! ReaderRouterStart
     
     system.WhenTerminated.Wait()

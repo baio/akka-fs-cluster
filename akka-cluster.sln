@@ -9,6 +9,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cluster", "Cluster\Cluster.
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Actors.Api", "Actors.Api\Actors.Api.fsproj", "{23F323FD-8A93-4800-8B73-2408726DEA31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lighthouse", "Lighthouse\Lighthouse.csproj", "{87BE1ABF-1F59-41AB-A3CB-4B1E7E0B218A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{23F323FD-8A93-4800-8B73-2408726DEA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23F323FD-8A93-4800-8B73-2408726DEA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23F323FD-8A93-4800-8B73-2408726DEA31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BE1ABF-1F59-41AB-A3CB-4B1E7E0B218A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BE1ABF-1F59-41AB-A3CB-4B1E7E0B218A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BE1ABF-1F59-41AB-A3CB-4B1E7E0B218A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BE1ABF-1F59-41AB-A3CB-4B1E7E0B218A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
