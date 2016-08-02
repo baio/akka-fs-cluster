@@ -6,6 +6,7 @@ open Akka.FSharp.Spawn
 open Akka.Actor
 open FSharp.Configuration
 
+open System
 open WriterActor
 //open ReaderRouter
 open ReaderActor
@@ -14,7 +15,6 @@ open ReaderActor
 let main argv = 
 
     let system = System.create "globomantics" (Configuration.load())
-
     
     let writer = spawn system "WriterActor" (WriterActor)    
 
@@ -27,7 +27,8 @@ let main argv =
     //reader <! ReadMessage
     //readerRouter <! ReaderRouterStart
     
+    system.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(1.), TimeSpan.FromSeconds(2.), reader, ReadMessage)
+        
     system.WhenTerminated.Wait()
-
 
     0 // return an integer exit code
