@@ -1,5 +1,5 @@
 ﻿module ReaderRouter
-
+(*
 open System
 open Akka.Actor
 open Akka.FSharp
@@ -26,3 +26,4 @@ let ReaderRouter (writer: IActorRef) (mailbox: Actor<ReaderRouterMessage>) =
         }
         
     router()
+*)

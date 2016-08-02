@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Actors", "Actors\Actors.fsp
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cluster", "Cluster\Cluster.fsproj", "{B2FD82F6-2783-47E9-8A2B-7FBC348F9AD5}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Actors.Api", "Actors.Api\Actors.Api.fsproj", "{23F323FD-8A93-4800-8B73-2408726DEA31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B2FD82F6-2783-47E9-8A2B-7FBC348F9AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2FD82F6-2783-47E9-8A2B-7FBC348F9AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2FD82F6-2783-47E9-8A2B-7FBC348F9AD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F323FD-8A93-4800-8B73-2408726DEA31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F323FD-8A93-4800-8B73-2408726DEA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F323FD-8A93-4800-8B73-2408726DEA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F323FD-8A93-4800-8B73-2408726DEA31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

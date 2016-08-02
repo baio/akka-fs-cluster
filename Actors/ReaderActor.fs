@@ -9,7 +9,7 @@ open WriterActor
 type ReaderMessage =
     | ReadMessage
 
-let ReaderActor (writer: IActorRef) (mailbox: Actor<ReaderMessage>) = 
+let ReaderActor (mailbox: Actor<ReaderMessage>) = 
                
     let rnd = new Random()
 
@@ -20,6 +20,7 @@ let ReaderActor (writer: IActorRef) (mailbox: Actor<ReaderMessage>) =
             
             match msg with
             | ReadMessage -> 
+                let writer = mailbox.ActorSelection("/user/WriterActor")
                 writer <! WriteMessage(rnd.Next().ToString())
 
             return! reader()                

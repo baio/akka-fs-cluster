@@ -7,20 +7,27 @@ open Akka.Actor
 open FSharp.Configuration
 
 open WriterActor
-open ReaderRouter
+//open ReaderRouter
+open ReaderActor
 
 [<EntryPoint>]
 let main argv = 
-    printfn "%A" argv
 
-    let system = System.create "mySystem" (Configuration.load())
-    let writer = spawn system "WriterActor" (WriterActor)    
-    let readerRouter = spawn system "ReaderRouter" (ReaderRouter writer)    
+    let system = System.create "globomantics" (Configuration.load())
+
     
-    readerRouter <! ReaderRouterStart
+    let writer = spawn system "WriterActor" (WriterActor)    
 
+    //let routerOpt = SpawnOption.Router ( Akka.Routing.FromConfig.Instance )
+    //let supervisionOpt = SpawnOption.SupervisorStrategy (Strategy.OneForOne(fun _ -> Directive.Stop))
+
+    let reader = spawn system "ReaderActor" (ReaderActor)
+    //let readerRouter = spawn system "ReaderRouter" (ReaderRouter writer)    
+    
+    reader <! ReadMessage
+    //readerRouter <! ReaderRouterStart
+    
     system.WhenTerminated.Wait()
 
-    System.Console.ReadLine() |> ignore
 
     0 // return an integer exit code
