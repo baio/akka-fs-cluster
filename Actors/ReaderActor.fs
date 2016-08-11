@@ -9,19 +9,21 @@ open WriterActor
 type ReaderMessage =
     | ReadMessage
 
-let ReaderActor (mailbox: Actor<ReaderMessage>) = 
+let ReaderActor (mailbox: Actor<_>) = 
                
     let rnd = new Random()
+
+    printfn "deployed !!!"
 
     let rec reader() = 
         actor {
     
             let! msg = mailbox.Receive()
+
+            printf "reader msg %A" msg
             
-            match msg with
-            | ReadMessage -> 
-                let writer = mailbox.ActorSelection("/user/WriterActor")
-                writer <! WriteMessage(rnd.Next().ToString())
+            //let writer = mailbox.ActorSelection("/user/WriterActor")
+            //writer <! rnd.Next()
 
             return! reader()                
         }

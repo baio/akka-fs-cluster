@@ -27,7 +27,7 @@ let main argv =
     //reader <! ReadMessage
     //readerRouter <! ReaderRouterStart
     
-    system.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(1.), TimeSpan.FromSeconds(2.), reader, ReadMessage)
+    system.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(1.), TimeSpan.FromSeconds(2.), reader, "hello")
         
     system.WhenTerminated.Wait()
 
