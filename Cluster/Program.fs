@@ -15,18 +15,14 @@ open ReaderActor
 let main argv = 
 
     let system = System.create "globomantics" (Configuration.load())
-    
-    let writer = spawn system "WriterActor" (WriterActor)    
 
     let routerOpt = SpawnOption.Router ( Akka.Routing.FromConfig.Instance )
     let supervisionOpt = SpawnOption.SupervisorStrategy (Strategy.OneForOne(fun _ -> Directive.Stop))
+        
+    let writer = spawn system "WriterActor" (WriterActor)
 
-    //let reader = spawn system "ReaderActor" (ReaderActor)
     let reader = spawne system "ReaderActor" <@ (ReaderActor) @> [routerOpt; supervisionOpt]
-    
-    //reader <! ReadMessage
-    //readerRouter <! ReaderRouterStart
-    
+        
     system.Scheduler.ScheduleTellRepeatedly(TimeSpan.FromSeconds(1.), TimeSpan.FromSeconds(2.), reader, ReadMessage)
         
     system.WhenTerminated.Wait()

@@ -10,6 +10,8 @@ type ReaderMessage =
     | ReadMessage
 
 let ReaderActor (mailbox: Actor<ReaderMessage>) = 
+
+    printfn "Reader Started !!!"
                
     let rnd = new Random()
 
@@ -20,7 +22,8 @@ let ReaderActor (mailbox: Actor<ReaderMessage>) =
             
             match msg with
             | ReadMessage -> 
-                let writer = mailbox.ActorSelection("/user/WriterActor")
+                printfn "Read !!!"
+                let writer = mailbox.ActorSelection("../../WriterActor")
                 writer <! WriteMessage(rnd.Next().ToString())
 
             return! reader()                

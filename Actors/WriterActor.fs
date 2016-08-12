@@ -8,14 +8,16 @@ type WriterMessage =
     | WriteMessage of string
 
 let WriterActor (mailbox: Actor<WriterMessage>) = 
-               
+
+    printfn "Writer Started !!!"
+                   
     let rec reader() = 
         actor {
     
             let! msg = mailbox.Receive()
             
             match msg with
-            | WriteMessage s -> printfn "%s" s
+            | WriteMessage s -> printfn "Write %s" s
 
             return! reader()                
         }
